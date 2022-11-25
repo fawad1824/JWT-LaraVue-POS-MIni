@@ -42,7 +42,7 @@
                     </div>
                 </li> -->
                 <li class="nav-item">
-                    <router-link class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Employees"
+                    <router-link class="nav-link collapsed" to="#" data-toggle="collapse" data-target="#Employees"
                         aria-expanded="true" aria-controls="Employees">
                         <i class="far fa-fw fa-window-maximize"></i>
                         <span>Employee</span>
@@ -50,13 +50,13 @@
                     <div id="Employees" class="collapse" aria-labelledby="headingBootstrap"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <router-link class="collapse-item" to="alerts.html">Add Employees</router-link>
-                            <router-link class="collapse-item" to="alerts.html">All Employees</router-link>
+                            <router-link class="collapse-item" to="add-emp">Add Employees</router-link>
+                            <router-link class="collapse-item" to="all-emp">All Employees</router-link>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Suppliers"
+                    <router-link class="nav-link collapsed" to="#" data-toggle="collapse" data-target="#Suppliers"
                         aria-expanded="true" aria-controls="Suppliers">
                         <i class="far fa-fw fa-window-maximize"></i>
                         <span>Suppliers</span>
@@ -64,12 +64,11 @@
                     <div id="Suppliers" class="collapse" aria-labelledby="headingBootstrap"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <router-link class="collapse-item" to="alerts.html">Add Suppliers</router-link>
-                            <router-link class="collapse-item" to="alerts.html">All Suppliers</router-link>
+                            <router-link class="collapse-item" to="add-sup">Add Suppliers</router-link>
+                            <router-link class="collapse-item" to="all-sup">All Suppliers</router-link>
                         </div>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <router-link class="nav-link" to="/logout">
                         <i class="fas fa-sign-out-alt"></i>

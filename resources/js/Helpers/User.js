@@ -39,11 +39,22 @@ class User {
         return false
     }
 
+    // Toast
     ReposnseError($message, $error) {
         Toast.fire({
             icon: $error,
             title: $message
         })
+    }
+
+    // Noty Alert
+    NotyAlertss($type, $text) {
+        new Noty({
+            type: $type,
+            layout: "topRight",
+            text: $text,
+            timeout: 1000,
+        }).show();
     }
 
 

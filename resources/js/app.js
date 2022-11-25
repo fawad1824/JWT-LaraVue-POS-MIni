@@ -10,10 +10,6 @@ import app from './Layouts/App.vue';
 import User from "./Helpers/User";
 window.User = User;
 
-// Helper Notifications Class
-import Notifications from "./Helpers/Notifications";
-window.Notifications = Notifications;
-
 
 // Toaster
 const Toast = Swal.mixin({
