@@ -43,35 +43,7 @@ class EmployeeController extends Controller
             'phone' => 'required',
         ]);
 
-        $employee = new Employee();
-
-        if ($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $ext = $image->extension();
-            $file = $request->name . '.' . $ext;
-            $image->move('images/', $file);
-
-            $employee = new Employee();
-            $employee->name = $request->name;
-            $employee->email = $request->email;
-            $employee->phone = $request->phone;
-            $employee->sallary = $request->salary;
-            $employee->address = $request->address;
-            $employee->nid = $request->nid;
-            $employee->photo = 'images/' . $file;
-            $employee->date = $request->date;
-            $employee->save();
-        } else {
-            $employee = new Employee();
-            $employee->name = $request->name;
-            $employee->email = $request->email;
-            $employee->phone = $request->phone;
-            $employee->sallary = $request->salary;
-            $employee->address = $request->address;
-            $employee->nid = $request->bid;
-            $employee->date = $request->date;
-            $employee->save();
-        }
+        Employee::EmployeesCreate($request);
     }
 
     /**

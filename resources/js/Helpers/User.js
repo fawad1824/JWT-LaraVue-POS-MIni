@@ -1,5 +1,7 @@
 import Token from "./Token"
 import AppStorage from "./AppStorage"
+import moment from 'moment'
+
 
 class User {
     responseAfterLogin(res) {
@@ -56,8 +58,6 @@ class User {
             timeout: 1000,
         }).show();
     }
-
-
 
 }
 
