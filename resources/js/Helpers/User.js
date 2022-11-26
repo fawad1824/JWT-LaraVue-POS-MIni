@@ -48,11 +48,11 @@ class User {
     }
 
     // Noty Alert
-    NotyAlertss($type, $text) {
+    NotyAlertss(type, text) {
         new Noty({
-            type: $type,
+            type: type,
             layout: "topRight",
-            text: $text,
+            text: text,
             timeout: 1000,
         }).show();
     }

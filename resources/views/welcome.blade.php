@@ -13,6 +13,7 @@
     <link href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/css/ruang-admin.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -25,12 +26,21 @@
     <script src="{{ asset('backend/js/ruang-admin.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
     <script>
         let token = localStorage.getItem('token');
         if (token) {
             $('#sidebarmain').css("display", "");
             $('#topbarMain').css("display", "");
         }
+        $(document).ready(function() {
+            $('#dataTable').DataTable(); // ID From dataTable
+            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        });
     </script>
 </body>
 
