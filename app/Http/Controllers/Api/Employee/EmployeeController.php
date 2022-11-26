@@ -44,6 +44,13 @@ class EmployeeController extends Controller
         ]);
 
         Employee::EmployeesCreate($request);
+        return response()->json(
+            [
+                'message' => 'Sucessfully Done!',
+                'status' => 'success',
+
+            ]
+        );
     }
 
     /**

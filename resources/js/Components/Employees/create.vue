@@ -160,9 +160,9 @@ export default {
             formData.append('photo', this.form.photo);
 
             axios.post('api/employee', formData, config)
-                .then(() => {
+                .then((res) => {
                     this.$router.push({ name: 'AllEmp' })
-                    User.NotyAlertss("success", "Employee Add Successfully");
+                    User.NotyAlertss(res.data.status, res.data.message);
                 }).catch(
                     error => this.errors = error.response.data.errors
                 )
