@@ -148,7 +148,6 @@ export default {
             const config = {
                 headers: { 'content-type': 'multipart/form-data' }
             }
-
             let formData = new FormData();
             formData.append('name', this.form.name);
             formData.append('email', this.form.email);
@@ -158,7 +157,6 @@ export default {
             formData.append('nid', this.form.nid);
             formData.append('date', this.form.date);
             formData.append('photo', this.form.photo);
-
             axios.post('api/employee', formData, config)
                 .then((res) => {
                     this.$router.push({ name: 'AllEmp' })

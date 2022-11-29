@@ -29,7 +29,7 @@
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" v-model="form.name" class="form-control" id="inname"
                                         placeholder="Enter Name">
-                                    <input type="text" v-model="form.id" class="form-control" id="id">
+                                    <input type="text" hidden v-model="form.id" class="form-control" id="id">
                                     <small class="text-danger" v-if="errors.name">{{ errors.name[0]
                                     }}</small>
                                 </div>
@@ -167,6 +167,7 @@ export default {
             formData.append('salary', this.form.sallary);
             formData.append('address', this.form.address);
             formData.append('nid', this.form.nid);
+            formData.append('id', this.form.id);
             formData.append('date', this.form.date);
             formData.append('photo', this.form.photo);
 

@@ -25,23 +25,39 @@ class Employee extends Model
     {
         if ($request->id) {
             $employee =  Employee::where('id', $request->id)->first();
+            $employee->name = $request->name;
+            $employee->email = $request->email;
+            $employee->phone = $request->phone;
+            $employee->sallary = $request->salary;
+            $employee->address = $request->address;
+            $employee->nid = $request->nid;
+            $employee->date = $request->date;
+            if ($request->hasFile('photo')) {
+                unlink($employee->photo);
+                $image = $request->file('photo');
+                $ext = $image->extension();
+                $file = $request->name . '.' . $ext;
+                $image->move('images/', $file);
+                $employee->photo = 'images/' . $file;
+            }
+            return $employee->save();
         } else {
             $employee = new Employee();
+            $employee->name = $request->name;
+            $employee->email = $request->email;
+            $employee->phone = $request->phone;
+            $employee->sallary = $request->salary;
+            $employee->address = $request->address;
+            $employee->nid = $request->nid;
+            $employee->date = $request->date;
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+                $ext = $image->extension();
+                $file = $request->name . '.' . $ext;
+                $image->move('images/', $file);
+                $employee->photo = 'images/' . $file;
+            }
+            return  $employee->save();
         }
-        $employee->name = $request->name;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
-        $employee->sallary = $request->salary;
-        $employee->address = $request->address;
-        $employee->nid = $request->bid;
-        $employee->date = $request->date;
-        if ($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $ext = $image->extension();
-            $file = $request->name . '.' . $ext;
-            $image->move('images/', $file);
-            $employee->photo = 'images/' . $file;
-        }
-        $employee->save();
     }
 }

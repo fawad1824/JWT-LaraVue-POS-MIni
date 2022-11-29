@@ -48,7 +48,7 @@ class EmployeeController extends Controller
             'phone' => 'required',
         ]);
 
-        Employee::EmployeesCreate($request);
+         Employee::EmployeesCreate($request);
         return response()->json(
             [
                 'message' => 'Sucessfully Done!',
