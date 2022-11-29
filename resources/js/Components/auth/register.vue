@@ -88,7 +88,6 @@ export default {
                     User.responseAfterLogin(res)
                     User.ReposnseError(res.data.message, res.data.status)
                     this.$router.push({ name: 'home' })
-                    console.log(res);
                 }).catch(
                     error => this.errors = error.response.data.errors
                 )

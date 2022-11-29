@@ -18,6 +18,10 @@
             <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">All Employees</h6>
+
+                    <br>
+                    <input type="text" v-model="searchTeam" class="form-control" style="width:300px;"
+                        placeholder="Search Here">
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -35,17 +39,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="employee in employees" :key="employee.id">
+                                        <tr v-for="employee in filterSearch" :key="employee.id">
                                             <td>{{ employee.name }}</td>
                                             <td><img :src="employee.photo" id="em_photo"></td>
                                             <td>{{ employee.phone }}</td>
                                             <td>{{ employee.sallary }}</td>
                                             <td>{{ employee.date }}</td>
                                             <td>
-                                                <a @click.prevent="EditEmployee" type="button" style="margin: 3px;"
-                                                    href="" class="btn btn-sm btn-primary">Edit</a>
-                                                <a @click.prevent="DeleteEmployee" type="button" style="margin: 3px;"
-                                                    href="" class="btn btn-sm btn-danger">Delete</a>
+                                                <router-link
+                                                    :to="{ name: 'edit-employee', params: { id: employee.id } }"
+                                                    style="margin: 3px;" class="btn btn-sm btn-primary">Edit
+                                                </router-link>
+                                                <a @click.prevent="DeleteEmployee(employee.id)" type="button"
+                                                    style="margin: 3px;" href=""
+                                                    class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -70,7 +77,20 @@ export default {
     },
     data() {
         return {
-            employees: []
+            employees: [],
+            searchTeam: "",
+        }
+    },
+
+    computed: {
+        filterSearch() {
+            return this.employees.filter(employee => {
+                if (employee.name.match(this.searchTeam)) {
+                    return employee.name.match(this.searchTeam);
+                } else if (employee.phone.match(this.searchTeam)) {
+                    return employee.phone.match(this.searchTeam);
+                }
+            });
         }
     },
     methods: {
@@ -79,11 +99,32 @@ export default {
                 .then(({ data }) => (this.employees = data))
                 .catch()
         },
-        EditEmployee() {
-            alert("edit")
-        },
-        DeleteEmployee() {
-            alert("delete");
+        DeleteEmployee(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete('/api/employee/' + id)
+                        .then(() => {
+                            this.employees = this.employees.filter(employee => {
+                                return employee.id != id
+                            })
+                        }).catch(() => {
+                            this.$router.push({ name: 'AllEmp' })
+                        })
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            });
         }
     },
     created() {

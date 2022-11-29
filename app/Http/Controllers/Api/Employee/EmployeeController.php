@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +66,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::where('id', $id)->first();
+        return response()->json($employee);
     }
 
     /**
@@ -70,10 +76,6 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -82,10 +84,6 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -95,6 +93,11 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = Employee::where('id', $id)->first();
+        $photo = $employee->photo;
+        if ($photo) {
+            unlink($photo);
+        }
+        Employee::where('id', $id)->delete();
     }
 }

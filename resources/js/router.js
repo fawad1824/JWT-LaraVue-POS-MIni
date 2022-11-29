@@ -11,6 +11,7 @@ import logout from './Components/auth/logout.vue';
 // Emp
 import AddEmp from './Components/Employees/create.vue';
 import AllEmp from './Components/Employees/index.vue';
+import EditEmp from './Components/Employees/edit.vue';
 
 // Sup
 import AddSup from './Components/Suppliers/create.vue';
@@ -52,6 +53,11 @@ const routes = [{
         path: '/all-emp',
         name: 'AllEmp',
         component: AllEmp,
+    },
+    {
+        path: '/edit-employee/:id',
+        name: 'edit-employee',
+        component: EditEmp,
     },
 
     // Sup
