@@ -1,9 +1,11 @@
 <template>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">All Employees</h1>
+        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./">Home</a></li>
-            <li class="breadcrumb-item">All Employees</li>
+            <li class="breadcrumb-item">
+                <router-link :to="{ name: 'home' }">Home</router-link>
+            </li>
+            <li class="breadcrumb-item">Employees</li>
             <li class="breadcrumb-item active" aria-current="page">Create Employees</li>
         </ol>
     </div>
@@ -34,6 +36,7 @@
                                             <th>Photo</th>
                                             <th>Phone</th>
                                             <th>Sallary</th>
+                                            <th>NID</th>
                                             <th>Joining Date</th>
                                             <th>Actions</th>
                                         </tr>
@@ -44,6 +47,7 @@
                                             <td><img :src="employee.photo" id="em_photo"></td>
                                             <td>{{ employee.phone }}</td>
                                             <td>{{ employee.sallary }}</td>
+                                            <td>{{ employee.nid }}</td>
                                             <td>{{ employee.date }}</td>
                                             <td>
                                                 <router-link
@@ -89,6 +93,8 @@ export default {
                     return employee.name.match(this.searchTeam);
                 } else if (employee.phone.match(this.searchTeam)) {
                     return employee.phone.match(this.searchTeam);
+                } else if (employee.sallary.match(this.searchTeam)) {
+                    return employee.sallary.match(this.searchTeam);
                 }
             });
         }

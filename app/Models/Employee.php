@@ -10,6 +10,7 @@ class Employee extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'name',
         'email',
         'phone',
@@ -19,6 +20,7 @@ class Employee extends Model
         'nid',
         'date',
     ];
+
     protected $table = "employee";
 
     public static function EmployeesCreate($request)

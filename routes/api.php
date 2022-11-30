@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Employee\EmployeeController;
+use App\Http\Controllers\Api\Suppliers\SupplierController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,4 @@ Route::controller(AuthController::class)->group(function () {
 
 
 Route::apiResource('/employee', EmployeeController::class);
+Route::apiResource('/supplier', SupplierController::class);
